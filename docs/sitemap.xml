@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://blog.ajcajc.com/about/</loc>
     <lastmod>2024-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://blog.ajcajc.com/</loc>
     <lastmod>2024-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/investigating-browser-geolocation/</loc>
+    <loc>https://blog.ajcajc.com/investigating-browser-geolocation/</loc>
     <lastmod>2024-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://blog.ajcajc.com/posts/</loc>
     <lastmod>2024-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://blog.ajcajc.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://blog.ajcajc.com/tags/</loc>
   </url>
 </urlset>
