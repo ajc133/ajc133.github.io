@@ -7,8 +7,86 @@
     <description>Recent content on ajcajc.com</description>
     <generator>Hugo 0.134.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2024 16:25:04 -0800</lastBuildDate>
     <atom:link rel="self" href="https://blog.ajcajc.com/feed.xml" type="application/rss+xml" />
+    <item>
+      <title>Hannukah of Data: Part 1</title>
+      <link>https://blog.ajcajc.com/hannukah-of-data-part-1/</link>
+      <pubDate>Sun, 03 Nov 2024 16:25:04 -0800</pubDate>
+      <guid>https://blog.ajcajc.com/hannukah-of-data-part-1/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://hanukkah.bluebird.sh/5784/&#34;&gt;Hannukah of Data: Noah&amp;rsquo;s Rug&lt;/a&gt;&lt;/em&gt; is a super fun data puzzle where you must sift through a database from Noah&amp;rsquo;s Market, &amp;ldquo;a bustling mom-and-pop everything store in Manhattan&amp;rdquo;, and find past customers who can help you find Noah&amp;rsquo;s Rug.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m going to attempt the challenges with a mix of Python and SQL.
+I&amp;rsquo;ll try using &lt;a href=&#34;https://docs.pola.rs/&#34;&gt;Polars&lt;/a&gt;, a new DataFrame library which seems more intuitive to me than Pandas.
+I know I&amp;rsquo;ll be bailing out and using SQL as the tasks get harder, though.&lt;/p&gt;
+&lt;p&gt;Part 0 is getting access to the database files, which I&amp;rsquo;ll leave as an exercise to the reader.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll also be leaving most of the challenge description/story out of this, but I really recommend playing along because it&amp;rsquo;s funny story that plays out.&lt;/p&gt;
+
+
+
+&lt;h1 id=&#34;part-1-the-investigator&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/#part-1-the-investigator&#34;&gt;Part 1: The Investigator&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The goal is to find the customer whose phone number is equivalent to their last name spelled out (when translated into 10-key phone number presses).&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/retro-cell-phone-keypad.png&#34;
+    alt=&#34;10-key phone keyboard&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;First, we&amp;rsquo;ll need a function that converts a string (last name) to a phone number.
+For example, &amp;ldquo;SAM&amp;rdquo; would be &amp;ldquo;726&amp;rdquo; and &amp;ldquo;NOAH&amp;rdquo; would be &amp;ldquo;6624&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last name and see if it matches their phone number.&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; polars &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pl
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;customers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_csv(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data/noahs-customers.csv&amp;#34;&lt;/span&gt;,try_parse_dates&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;letter_to_number&lt;/span&gt;(letter: str) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(letter) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ValueError&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;You can only pass one letter at a time&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    letter &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; letter&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;lower()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;abc&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;def&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ghi&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;4&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;jkl&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;5&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mno&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pqrs&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;7&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tuv&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; letter &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;wxyz&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;9&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name_to_number&lt;/span&gt;(name: str) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join([letter_to_number(l) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; name &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;isalpha()])&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Solution&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;last_names_translated &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; customers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;extract(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;(.+) (.+)&amp;#34;&lt;/span&gt;, group_index&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;map_elements(name_to_number, return_dtype&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;String)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;alias(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;),pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;last_names_translated&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace_all(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;h1 id=&#34;explanation&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/#explanation&#34;&gt;Explanation&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The solution code selects the &amp;ldquo;name&amp;rdquo; column in the customers table, extracts the last name, and runs the &lt;code&gt;name_to_number&lt;/code&gt; function function on it.
+The second line then filters all the rows where the above &amp;ldquo;last name translated to phone number&amp;rdquo; (here I called the new column &lt;code&gt;name_number&lt;/code&gt;) is equal to the the phone number.
+Luckily there was only one person!&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>How is location shared without using GPS?</title>
       <link>https://blog.ajcajc.com/investigating-browser-geolocation/</link>
