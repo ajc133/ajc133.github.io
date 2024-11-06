@@ -26,14 +26,14 @@ I know I&amp;rsquo;ll be bailing out and using SQL as the tasks get harder, thou
 &lt;h1 id=&#34;part-1-the-investigator&#34;&gt;
   &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/#part-1-the-investigator&#34;&gt;Part 1: The Investigator&lt;/a&gt;
 &lt;/h1&gt;
-&lt;p&gt;The goal is to find the customer whose phone number is equivalent to their last name spelled out (when translated into 10-key phone number presses).&lt;/p&gt;
+&lt;p&gt;The goal is to find the customer whose phone number is equivalent to their last name spelled out (when translated into 10-key phone number presses).
+For those unfamiliar with spelling out words with phone numbers, &amp;ldquo;SAM&amp;rdquo; would be &amp;ldquo;726&amp;rdquo; and &amp;ldquo;NOAH&amp;rdquo; would be &amp;ldquo;6624&amp;rdquo;.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/retro-cell-phone-keypad.png&#34;
     alt=&#34;10-key phone keyboard&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;First, we&amp;rsquo;ll need a function that converts a string (last name) to a phone number.
-For example, &amp;ldquo;SAM&amp;rdquo; would be &amp;ldquo;726&amp;rdquo; and &amp;ldquo;NOAH&amp;rdquo; would be &amp;ldquo;6624&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last name and see if it matches their phone number.&lt;/p&gt;
+Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last name and see if it matches their phone number.&lt;/p&gt;
 
   
 

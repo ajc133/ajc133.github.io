@@ -19,12 +19,11 @@ I'll also be leaving most of the challenge description/story out of this, but I 
 # Part 1: The Investigator
 
 The goal is to find the customer whose phone number is equivalent to their last name spelled out (when translated into 10-key phone number presses).
+For those unfamiliar with spelling out words with phone numbers, "SAM" would be "726" and "NOAH" would be "6624".
 
 {{< figure src="/retro-cell-phone-keypad.png" alt="10-key phone keyboard" >}}
 
 First, we'll need a function that converts a string (last name) to a phone number. 
-For example, "SAM" would be "726" and "NOAH" would be "6624".
-
 Then, we'll need to run that function on everyone's last name and see if it matches their phone number.
 
 ```python
