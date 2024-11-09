@@ -7,19 +7,14 @@
     <description>Recent content in Tags on ajcajc.com</description>
     <generator>Hugo 0.134.2</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 09 Nov 2024 09:11:48 -0800</lastBuildDate>
     <atom:link rel="self" href="https://blog.ajcajc.com/tags/feed.xml" type="application/rss+xml" />
     <item>
-      <title>Hannukah of Data Part 2</title>
+      <title>Part 2: The Contractor</title>
       <link>https://blog.ajcajc.com/hannukah-of-data-part-2/</link>
       <pubDate>Sat, 09 Nov 2024 09:11:48 -0800</pubDate>
       <guid>https://blog.ajcajc.com/hannukah-of-data-part-2/</guid>
-      <description>
-
-
-&lt;h1 id=&#34;part-2-the-contractor&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-2/#part-2-the-contractor&#34;&gt;Part 2: The Contractor&lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor&amp;rsquo;s phone number.&lt;/p&gt;
+      <description>&lt;p&gt;Finding the phone number in &lt;a href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/&#34;&gt;Part 1&lt;/a&gt; of the Hannukah of Data unlocks Part 2, where you need to find a contractor&amp;rsquo;s phone number.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;hellip; &lt;strong&gt;they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. &lt;strong&gt;‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.&lt;/strong&gt;&lt;/p&gt;
@@ -97,7 +92,7 @@ Then I&amp;rsquo;ll take the orders that had three items or more.&lt;/p&gt;
 └─────────┴─────┘
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This happens to work in this case, but I suspect it&amp;rsquo;ll fail in larger datasets.
-I find it hard to believe there&amp;rsquo;s only one person within initals JP who bought three coffees in 2017.&lt;/p&gt;
+I find it hard to believe there&amp;rsquo;s only one person with initals JP who bought three coffees in 2017.&lt;/p&gt;
 &lt;p&gt;Now I find the customer who placed that order.&lt;/p&gt;
 
   
@@ -117,7 +112,7 @@ I find it hard to believe there&amp;rsquo;s only one person within initals JP wh
 </description>
     </item>
     <item>
-      <title>Hannukah of Data: Part 1</title>
+      <title>Part 1: The Investigator</title>
       <link>https://blog.ajcajc.com/hannukah-of-data-part-1/</link>
       <pubDate>Sun, 03 Nov 2024 16:25:04 -0800</pubDate>
       <guid>https://blog.ajcajc.com/hannukah-of-data-part-1/</guid>
@@ -200,6 +195,7 @@ Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last nam
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The solution code runs the &lt;code&gt;name_to_number&lt;/code&gt; function on every customer&amp;rsquo;s last name and compares that to their phone number.
 Luckily there was only one person who came up: Sam Tannenbaum!&lt;/p&gt;
+&lt;p&gt;Continue on to &lt;a href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-2/&#34;&gt;part 2&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>

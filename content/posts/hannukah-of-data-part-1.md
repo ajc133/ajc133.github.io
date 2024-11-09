@@ -1,9 +1,8 @@
 ---
-title: "Hannukah of Data: Part 1"
+title: "Part 1: The Investigator"
 date: 2024-11-03T16:25:04-08:00
-description: Solving where Noah's Rug has gone
-categories: []
-tags: []
+description: Solving where Noah's Rug has gone in the Hannukah of Data
+tags: ["hannukah-of-data"]
 ---
 
 *[Hannukah of Data: Noah's Rug](https://hanukkah.bluebird.sh/5784/)* is a super fun data puzzle where you must sift through a database from Noah's Market, "a bustling mom-and-pop everything store in Manhattan", and find past customers who can help you find Noah's Rug.
@@ -89,3 +88,5 @@ print(last_names_translated.filter(
 
 The solution code runs the `name_to_number` function on every customer's last name and compares that to their phone number.
 Luckily there was only one person who came up: Sam Tannenbaum!
+
+Continue on to [part 2]({{< ref "hannukah-of-data-part-2" >}})

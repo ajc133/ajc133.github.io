@@ -2,13 +2,13 @@
 <?xml-stylesheet type="text/xsl" href="https://blog.ajcajc.com/xml/base.min.xml" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on ajcajc.com</title>
-    <link>https://blog.ajcajc.com/posts/</link>
-    <description>Recent content in Posts on ajcajc.com</description>
+    <title>Hannukah-of-Data on ajcajc.com</title>
+    <link>https://blog.ajcajc.com/tags/hannukah-of-data/</link>
+    <description>Recent content in Hannukah-of-Data on ajcajc.com</description>
     <generator>Hugo 0.134.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 09 Nov 2024 09:11:48 -0800</lastBuildDate>
-    <atom:link rel="self" href="https://blog.ajcajc.com/posts/feed.xml" type="application/rss+xml" />
+    <atom:link rel="self" href="https://blog.ajcajc.com/tags/hannukah-of-data/feed.xml" type="application/rss+xml" />
     <item>
       <title>Part 2: The Contractor</title>
       <link>https://blog.ajcajc.com/hannukah-of-data-part-2/</link>

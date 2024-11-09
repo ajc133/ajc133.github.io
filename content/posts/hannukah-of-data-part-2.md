@@ -1,11 +1,10 @@
 ---
-title: "Hannukah of Data Part 2"
+title: "Part 2: The Contractor"
 date: 2024-11-09T09:11:48-08:00
+tags: ["hannukah-of-data"]
 ---
 
-# Part 2: The Contractor
-
-Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor's phone number.
+Finding the phone number in [Part 1]({{< ref "hannukah-of-data-part-1" >}}) of the Hannukah of Data unlocks Part 2, where you need to find a contractor's phone number.
 
 > ... **they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.**
 > 
@@ -99,7 +98,7 @@ print(potential_contractor_orders)
 
 
 This happens to work in this case, but I suspect it'll fail in larger datasets. 
-I find it hard to believe there's only one person within initals JP who bought three coffees in 2017.
+I find it hard to believe there's only one person with initals JP who bought three coffees in 2017.
 
 Now I find the customer who placed that order.
 
