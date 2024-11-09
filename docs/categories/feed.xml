@@ -9,6 +9,114 @@
     <language>en-us</language>
     <atom:link rel="self" href="https://blog.ajcajc.com/categories/feed.xml" type="application/rss+xml" />
     <item>
+      <title>Hannukah of Data Part 2</title>
+      <link>https://blog.ajcajc.com/hannukah-of-data-part-2/</link>
+      <pubDate>Sat, 09 Nov 2024 09:11:48 -0800</pubDate>
+      <guid>https://blog.ajcajc.com/hannukah-of-data-part-2/</guid>
+      <description>
+
+
+&lt;h1 id=&#34;part-2-the-contractor&#34;&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-2/#part-2-the-contractor&#34;&gt;Part 2: The Contractor&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor&amp;rsquo;s phone number.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip; &lt;strong&gt;they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. &lt;strong&gt;‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; polars &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pl
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;customers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_csv(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data/noahs-customers.csv&amp;#34;&lt;/span&gt;,try_parse_dates&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;orders_items &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_csv(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data/noahs-orders_items.csv&amp;#34;&lt;/span&gt;,try_parse_dates&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;orders &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_csv(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data/noahs-orders.csv&amp;#34;&lt;/span&gt;,try_parse_dates&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;products &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_csv(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data/noahs-products.csv&amp;#34;&lt;/span&gt;,try_parse_dates&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;First I&amp;rsquo;ll find all the customers whose initials are JP.&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;jp_customers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; customers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contains(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^J.+ P.+$&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(len(jp_customers), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;, len(customers))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;72 / 8260
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Out of the 8,260 customers, 72 have initials JP.
+How many orders did they collectively place in 2017?&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Get all of the orders (including items) from JP in 2017&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;orders_2017 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; orders&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ordered&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;year() &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2017&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    jp_customers, on&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;customerid&amp;#34;&lt;/span&gt;, how&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;inner&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;orders_items_2017 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; orders_items&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(orders_2017, on&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orderid&amp;#34;&lt;/span&gt;, how&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;inner&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(len(orders_items_2017))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;486
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, so I need to find the customer who buys coffee, bagels, and cleaning supplies.
+Visually inspecting the products table shows that I only need to filter on products with descriptions containing &amp;ldquo;bagel&amp;rdquo;, &amp;ldquo;coffee&amp;rdquo;, and &amp;ldquo;cleaner&amp;rdquo;.&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;coffee_bagels_cleaners &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; products&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;desc&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contains(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bagel|Coffee|Cleaner&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(coffee_bagels_cleaners)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;shape: (4, 4)
+┌─────────┬───────────────┬────────────────┬───────────────┐
+│ sku     ┆ desc          ┆ wholesale_cost ┆ dims_cm       │
+│ ---     ┆ ---           ┆ ---            ┆ ---           │
+│ str     ┆ str           ┆ f64            ┆ str           │
+╞═════════╪═══════════════╪════════════════╪═══════════════╡
+│ BKY1573 ┆ Sesame Bagel  ┆ 1.02           ┆ 11.9|4.7|0.9  │
+│ HOM2761 ┆ Rug Cleaner   ┆ 1.43           ┆ 19.6|11.7|0.2 │
+│ BKY5717 ┆ Caraway Bagel ┆ 1.03           ┆ 11.3|2.3|1.6  │
+│ DLI8820 ┆ Coffee, Drip  ┆ 1.44           ┆ 9.6|7.8|0.7   │
+└─────────┴───────────────┴────────────────┴───────────────┘
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I want all the order ids where coffee &lt;strong&gt;AND&lt;/strong&gt; bagels &lt;strong&gt;AND&lt;/strong&gt; cleaner were purchased, but I&amp;rsquo;m going to take a shortcut and find the orders where coffee &lt;strong&gt;OR&lt;/strong&gt; bagels &lt;strong&gt;OR&lt;/strong&gt; cleaner were purchased.
+Then I&amp;rsquo;ll take the orders that had three items or more.&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Get all of the orders that had coffee OR bagels OR cleaner, since I&amp;#39;m too lazy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# to solve how to do it with AND&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;potential_contractor_orders &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    coffee_bagels_cleaners&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(orders_items_2017, on&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sku&amp;#34;&lt;/span&gt;, how&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;inner&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;group_by(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orderid&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;agg(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;len())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;len&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(potential_contractor_orders)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;shape: (1, 2)
+┌─────────┬─────┐
+│ orderid ┆ len │
+│ ---     ┆ --- │
+│ i64     ┆ u32 │
+╞═════════╪═════╡
+│ 7459    ┆ 3   │
+└─────────┴─────┘
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This happens to work in this case, but I suspect it&amp;rsquo;ll fail in larger datasets.
+I find it hard to believe there&amp;rsquo;s only one person within initals JP who bought three coffees in 2017.&lt;/p&gt;
+&lt;p&gt;Now I find the customer who placed that order.&lt;/p&gt;
+
+  
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(potential_contractor_orders&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(orders_2017, on&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orderid&amp;#34;&lt;/span&gt;, how&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;left&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    customers, on&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;customerid&amp;#34;&lt;/span&gt;, how&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;inner&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;shape: (1, 2)
+┌─────────────────┬──────────────┐
+│ name            ┆ phone        │
+│ ---             ┆ ---          │
+│ str             ┆ str          │
+╞═════════════════╪══════════════╡
+│ Joshua Peterson ┆ 332-274-4185 │
+└─────────────────┴──────────────┘
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    <item>
       <title>Hannukah of Data: Part 1</title>
       <link>https://blog.ajcajc.com/hannukah-of-data-part-1/</link>
       <pubDate>Sun, 03 Nov 2024 16:25:04 -0800</pubDate>

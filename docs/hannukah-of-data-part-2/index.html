@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  
+  <meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+    <meta name="description" content="
+  Part 2: The Contractor
+
+Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor&rsquo;s phone number.
+
+&hellip; they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.
+“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. ‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.">
+  
+
+
+<meta name="color-scheme" content="light dark">
+
+
+  
+  <meta itemprop="name" content="Hannukah of Data Part 2">
+  <meta itemprop="description" content=" Part 2: The Contractor Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor’s phone number.
+… they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.
+“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. ‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.">
+  <meta itemprop="datePublished" content="2024-11-09T09:11:48-08:00">
+  <meta itemprop="dateModified" content="2024-11-09T09:11:48-08:00">
+  <meta itemprop="wordCount" content="474">
+
+
+
+  <meta property="og:url" content="https://blog.ajcajc.com/hannukah-of-data-part-2/">
+  <meta property="og:site_name" content="ajcajc.com">
+  <meta property="og:title" content="Hannukah of Data Part 2">
+  <meta property="og:description" content=" Part 2: The Contractor Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor’s phone number.
+… they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.
+“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. ‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-09T09:11:48-08:00">
+    <meta property="article:modified_time" content="2024-11-09T09:11:48-08:00">
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.2">
+  <title>Hannukah of Data Part 2 | ajcajc.com</title>
+  <link rel="canonical" href="https://blog.ajcajc.com/hannukah-of-data-part-2/">
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+    
+  
+  
+
+
+
+
+
+  
+    
+  
+  
+      <link rel="stylesheet" href="/css/base.min.e1f3863e7cba8d10f78ba3f591a71b75c9070e6ea08cfb22f861866e6345818d.css" integrity="sha256-4fOGPny6jRD3i6P1kacbdckHDm6gjPsi&#43;GGGbmNFgY0=" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="/css/syntax.min.0a65901677c5717450e892b7a927f5b62a8a0485acadf81b264df779dec11a8d.css" integrity="sha256-CmWQFnfFcXRQ6JK3qSf1tiqKBIWsrfgbJk33ed7BGo0=" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item Banner-item--title">
+        <a class="Banner-link u-clickable" href="/">ajcajc.com</a>
+      </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/about/">About</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+        </li>
+      
+        
+        
+        <li class="Banner-item">
+          <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <main>
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+  <header class="Heading">
+  <h1 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/hannukah-of-data-part-2/" rel="bookmark">Hannukah of Data Part 2</a>
+  </h1>
+  
+    <time datetime="2024-11-09T09:11:48-08:00">November 9, 2024</time>
+  
+</header>
+  
+
+
+<h1 id="part-2-the-contractor">
+  <a class="Heading-link u-clickable" href="/hannukah-of-data-part-2/#part-2-the-contractor">Part 2: The Contractor</a>
+</h1>
+<p>Finding the phone number in Part 1 unlocks Part 2, where you need to find a contractor&rsquo;s phone number.</p>
+<blockquote>
+<p>&hellip; <strong>they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.</strong></p>
+<p>“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. <strong>‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.</strong></p>
+</blockquote>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> polars <span style="color:#66d9ef">as</span> pl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>customers <span style="color:#f92672">=</span> pl<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/noahs-customers.csv&#34;</span>,try_parse_dates<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>orders_items <span style="color:#f92672">=</span> pl<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/noahs-orders_items.csv&#34;</span>,try_parse_dates<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>orders <span style="color:#f92672">=</span> pl<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/noahs-orders.csv&#34;</span>,try_parse_dates<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>products <span style="color:#f92672">=</span> pl<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/noahs-products.csv&#34;</span>,try_parse_dates<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)</span></span></code></pre></div>
+<p>First I&rsquo;ll find all the customers whose initials are JP.</p>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>jp_customers <span style="color:#f92672">=</span> customers<span style="color:#f92672">.</span>filter(pl<span style="color:#f92672">.</span>col(<span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>contains(<span style="color:#e6db74">&#34;^J.+ P.+$&#34;</span>))
+</span></span><span style="display:flex;"><span>print(len(jp_customers), <span style="color:#e6db74">&#34;/&#34;</span>, len(customers))</span></span></code></pre></div>
+<pre><code>72 / 8260
+</code></pre>
+<p>Out of the 8,260 customers, 72 have initials JP.
+How many orders did they collectively place in 2017?</p>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Get all of the orders (including items) from JP in 2017</span>
+</span></span><span style="display:flex;"><span>orders_2017 <span style="color:#f92672">=</span> orders<span style="color:#f92672">.</span>filter(pl<span style="color:#f92672">.</span>col(<span style="color:#e6db74">&#34;ordered&#34;</span>)<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>year() <span style="color:#f92672">==</span> <span style="color:#ae81ff">2017</span>)<span style="color:#f92672">.</span>join(
+</span></span><span style="display:flex;"><span>    jp_customers, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;customerid&#34;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inner&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>orders_items_2017 <span style="color:#f92672">=</span> orders_items<span style="color:#f92672">.</span>join(orders_2017, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orderid&#34;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inner&#34;</span>)
+</span></span><span style="display:flex;"><span>print(len(orders_items_2017))</span></span></code></pre></div>
+<pre><code>486
+</code></pre>
+<p>Ok, so I need to find the customer who buys coffee, bagels, and cleaning supplies.
+Visually inspecting the products table shows that I only need to filter on products with descriptions containing &ldquo;bagel&rdquo;, &ldquo;coffee&rdquo;, and &ldquo;cleaner&rdquo;.</p>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>coffee_bagels_cleaners <span style="color:#f92672">=</span> products<span style="color:#f92672">.</span>filter(pl<span style="color:#f92672">.</span>col(<span style="color:#e6db74">&#34;desc&#34;</span>)<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>contains(<span style="color:#e6db74">&#34;Bagel|Coffee|Cleaner&#34;</span>))
+</span></span><span style="display:flex;"><span>print(coffee_bagels_cleaners)</span></span></code></pre></div>
+<pre><code>shape: (4, 4)
+┌─────────┬───────────────┬────────────────┬───────────────┐
+│ sku     ┆ desc          ┆ wholesale_cost ┆ dims_cm       │
+│ ---     ┆ ---           ┆ ---            ┆ ---           │
+│ str     ┆ str           ┆ f64            ┆ str           │
+╞═════════╪═══════════════╪════════════════╪═══════════════╡
+│ BKY1573 ┆ Sesame Bagel  ┆ 1.02           ┆ 11.9|4.7|0.9  │
+│ HOM2761 ┆ Rug Cleaner   ┆ 1.43           ┆ 19.6|11.7|0.2 │
+│ BKY5717 ┆ Caraway Bagel ┆ 1.03           ┆ 11.3|2.3|1.6  │
+│ DLI8820 ┆ Coffee, Drip  ┆ 1.44           ┆ 9.6|7.8|0.7   │
+└─────────┴───────────────┴────────────────┴───────────────┘
+</code></pre>
+<p>I want all the order ids where coffee <strong>AND</strong> bagels <strong>AND</strong> cleaner were purchased, but I&rsquo;m going to take a shortcut and find the orders where coffee <strong>OR</strong> bagels <strong>OR</strong> cleaner were purchased.
+Then I&rsquo;ll take the orders that had three items or more.</p>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Get all of the orders that had coffee OR bagels OR cleaner, since I&#39;m too lazy</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># to solve how to do it with AND</span>
+</span></span><span style="display:flex;"><span>potential_contractor_orders <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    coffee_bagels_cleaners<span style="color:#f92672">.</span>join(orders_items_2017, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sku&#34;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inner&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>group_by(<span style="color:#e6db74">&#34;orderid&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>agg(pl<span style="color:#f92672">.</span>len())
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>filter(pl<span style="color:#f92672">.</span>col(<span style="color:#e6db74">&#34;len&#34;</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(potential_contractor_orders)</span></span></code></pre></div>
+<pre><code>shape: (1, 2)
+┌─────────┬─────┐
+│ orderid ┆ len │
+│ ---     ┆ --- │
+│ i64     ┆ u32 │
+╞═════════╪═════╡
+│ 7459    ┆ 3   │
+└─────────┴─────┘
+</code></pre>
+<p>This happens to work in this case, but I suspect it&rsquo;ll fail in larger datasets.
+I find it hard to believe there&rsquo;s only one person within initals JP who bought three coffees in 2017.</p>
+<p>Now I find the customer who placed that order.</p>
+
+  
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(potential_contractor_orders<span style="color:#f92672">.</span>join(orders_2017, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orderid&#34;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span>)<span style="color:#f92672">.</span>join(
+</span></span><span style="display:flex;"><span>    customers, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;customerid&#34;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inner&#34;</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;phone&#34;</span>))</span></span></code></pre></div>
+<pre><code>shape: (1, 2)
+┌─────────────────┬──────────────┐
+│ name            ┆ phone        │
+│ ---             ┆ ---          │
+│ str             ┆ str          │
+╞═════════════════╪══════════════╡
+│ Joshua Peterson ┆ 332-274-4185 │
+└─────────────────┴──────────────┘
+</code></pre>
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+  
+
+
+
+      </div>
+    </div>
+  </main>
+  
+  <footer class="Footer">
+    <div class="u-wrapper">
+      <div class="u-padding u-noboosting">
+        <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
