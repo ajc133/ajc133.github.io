@@ -71,20 +71,28 @@ Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last nam
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Solution&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;last_names_translated &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; customers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;extract(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;(.+) (.+)&amp;#34;&lt;/span&gt;, group_index&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;map_elements(name_to_number, return_dtype&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;String)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;alias(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;),
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;),pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;extract(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;(.+) (.+)&amp;#34;&lt;/span&gt;, group_index&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;map_elements(name_to_number, return_dtype&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;String)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;alias(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;last_names_translated&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace_all(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-
-&lt;h1 id=&#34;explanation&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/#explanation&#34;&gt;Explanation&lt;/a&gt;
-&lt;/h1&gt;
-&lt;p&gt;The solution code selects the &amp;ldquo;name&amp;rdquo; column in the customers table, extracts the last name, and runs the &lt;code&gt;name_to_number&lt;/code&gt; function function on it.
-The second line then filters all the rows where the above &amp;ldquo;last name translated to phone number&amp;rdquo; (here I called the new column &lt;code&gt;name_number&lt;/code&gt;) is equal to the the phone number.
-Luckily there was only one person!&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(last_names_translated&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filter(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name_number&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; pl&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;col(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phone&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;str&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace_all(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;shape: (1, 3)
+┌─────────────┬────────────────┬──────────────┐
+│ name_number ┆ name           ┆ phone        │
+│ ---         ┆ ---            ┆ ---          │
+│ str         ┆ str            ┆ str          │
+╞═════════════╪════════════════╪══════════════╡
+│ 8266362286  ┆ Sam Tannenbaum ┆ 826-636-2286 │
+└─────────────┴────────────────┴──────────────┘
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The solution code runs the &lt;code&gt;name_to_number&lt;/code&gt; function on every customer&amp;rsquo;s last name and compares that to their phone number.
+Luckily there was only one person who came up: Sam Tannenbaum!&lt;/p&gt;
 </description>
     </item>
     <item>

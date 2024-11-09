@@ -64,15 +64,28 @@ def name_to_number(name: str) -> str:
 ```python
 # Solution
 last_names_translated = customers.select(
-    pl.col("name").str.extract(r"(.+) (.+)", group_index=2)
-        .map_elements(name_to_number, return_dtype=pl.String).alias("name_number"),
-    pl.col("name"),pl.col("phone"))
+    pl.col("name")
+    .str.extract(r"(.+) (.+)", group_index=2)
+    .map_elements(name_to_number, return_dtype=pl.String)
+    .alias("name_number"),
+    pl.col("name"),
+    pl.col("phone"),
+)
 
-last_names_translated.filter(pl.col("name_number") == pl.col("phone").str.replace_all("-",""))
+print(last_names_translated.filter(
+    pl.col("name_number") == pl.col("phone").str.replace_all("-", "")
+))
 ```
 
-# Explanation
+    shape: (1, 3)
+    ┌─────────────┬────────────────┬──────────────┐
+    │ name_number ┆ name           ┆ phone        │
+    │ ---         ┆ ---            ┆ ---          │
+    │ str         ┆ str            ┆ str          │
+    ╞═════════════╪════════════════╪══════════════╡
+    │ 8266362286  ┆ Sam Tannenbaum ┆ 826-636-2286 │
+    └─────────────┴────────────────┴──────────────┘
 
-The solution code selects the "name" column in the customers table, extracts the last name, and runs the `name_to_number` function function on it.
-The second line then filters all the rows where the above "last name translated to phone number" (here I called the new column `name_number`) is equal to the the phone number.
-Luckily there was only one person!
+
+The solution code runs the `name_to_number` function on every customer's last name and compares that to their phone number.
+Luckily there was only one person who came up: Sam Tannenbaum!
