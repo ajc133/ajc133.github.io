@@ -1,11 +1,11 @@
-baseURL: 'https://blog.ajcajc.com/'
+baseURL: 'https://ajcajc.com/'
 title: ajcajc.com
 author: AJ Collins
 languageCode: en-us
 pygmentsCodeFences: true
 enableRobotsTXT: true
 theme: hugo-flex
-publishDir: docs
+publishDir: public
 
 permalinks:
   posts: '/:filename/'

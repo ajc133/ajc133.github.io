@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<?xml-stylesheet type="text/xsl" href="https://blog.ajcajc.com/xml/base.min.xml" ?>
+<?xml-stylesheet type="text/xsl" href="https://ajcajc.com/xml/base.min.xml" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on ajcajc.com</title>
-    <link>https://blog.ajcajc.com/tags/</link>
+    <link>https://ajcajc.com/tags/</link>
     <description>Recent content in Tags on ajcajc.com</description>
     <generator>Hugo 0.134.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 09 Nov 2024 09:11:48 -0800</lastBuildDate>
-    <atom:link rel="self" href="https://blog.ajcajc.com/tags/feed.xml" type="application/rss+xml" />
+    <atom:link rel="self" href="https://ajcajc.com/tags/feed.xml" type="application/rss+xml" />
     <item>
       <title>Part 2: The Contractor</title>
-      <link>https://blog.ajcajc.com/hannukah-of-data-part-2/</link>
+      <link>https://ajcajc.com/hannukah-of-data-part-2/</link>
       <pubDate>Sat, 09 Nov 2024 09:11:48 -0800</pubDate>
-      <guid>https://blog.ajcajc.com/hannukah-of-data-part-2/</guid>
-      <description>&lt;p&gt;Finding the phone number in &lt;a href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/&#34;&gt;Part 1&lt;/a&gt; of the Hannukah of Data unlocks Part 2, where you need to find a contractor&amp;rsquo;s phone number.&lt;/p&gt;
+      <guid>https://ajcajc.com/hannukah-of-data-part-2/</guid>
+      <description>&lt;p&gt;Finding the phone number in &lt;a href=&#34;https://ajcajc.com/hannukah-of-data-part-1/&#34;&gt;Part 1&lt;/a&gt; of the Hannukah of Data unlocks Part 2, where you need to find a contractor&amp;rsquo;s phone number.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;hellip; &lt;strong&gt;they usually talked about the project over coffee and bagels at Noah’s before handing off the item to be cleaned. The contractors would pick up the tab and expense it, along with their cleaning supplies.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;“So this rug was apparently one of those special projects. The claim ticket said ‘2017 JP’. &lt;strong&gt;‘2017’ is the year the item was brought in, and ‘JP’ is the initials of the contractor.&lt;/strong&gt;&lt;/p&gt;
@@ -113,9 +113,9 @@ I find it hard to believe there&amp;rsquo;s only one person with initals JP who 
     </item>
     <item>
       <title>Part 1: The Investigator</title>
-      <link>https://blog.ajcajc.com/hannukah-of-data-part-1/</link>
+      <link>https://ajcajc.com/hannukah-of-data-part-1/</link>
       <pubDate>Sun, 03 Nov 2024 16:25:04 -0800</pubDate>
-      <guid>https://blog.ajcajc.com/hannukah-of-data-part-1/</guid>
+      <guid>https://ajcajc.com/hannukah-of-data-part-1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://hanukkah.bluebird.sh/5784/&#34;&gt;Hannukah of Data: Noah&amp;rsquo;s Rug&lt;/a&gt;&lt;/em&gt; is a super fun data puzzle where you must sift through a database from Noah&amp;rsquo;s Market, &amp;ldquo;a bustling mom-and-pop everything store in Manhattan&amp;rdquo;, and find past customers who can help you find Noah&amp;rsquo;s Rug.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m going to attempt the challenges with a mix of Python and SQL.
 I&amp;rsquo;ll try using &lt;a href=&#34;https://docs.pola.rs/&#34;&gt;Polars&lt;/a&gt;, a new DataFrame library which seems more intuitive to me than Pandas.
@@ -126,11 +126,11 @@ I know I&amp;rsquo;ll be bailing out and using SQL as the tasks get harder, thou
 
 
 &lt;h1 id=&#34;part-1-the-investigator&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-1/#part-1-the-investigator&#34;&gt;Part 1: The Investigator&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/hannukah-of-data-part-1/#part-1-the-investigator&#34;&gt;Part 1: The Investigator&lt;/a&gt;
 &lt;/h1&gt;
 &lt;p&gt;The goal is to find the customer whose phone number is equivalent to their last name spelled out (when translated into 10-key phone number presses).
 For those unfamiliar with spelling out words with phone numbers, &amp;ldquo;SAM&amp;rdquo; would be &amp;ldquo;726&amp;rdquo; and &amp;ldquo;NOAH&amp;rdquo; would be &amp;ldquo;6624&amp;rdquo;.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/retro-cell-phone-keypad.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/retro-cell-phone-keypad.png&#34;
     alt=&#34;10-key phone keyboard&#34;&gt;
 &lt;/figure&gt;
 
@@ -195,15 +195,15 @@ Then, we&amp;rsquo;ll need to run that function on everyone&amp;rsquo;s last nam
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The solution code runs the &lt;code&gt;name_to_number&lt;/code&gt; function on every customer&amp;rsquo;s last name and compares that to their phone number.
 Luckily there was only one person who came up: Sam Tannenbaum!&lt;/p&gt;
-&lt;p&gt;Continue on to &lt;a href=&#34;https://blog.ajcajc.com/hannukah-of-data-part-2/&#34;&gt;part 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Continue on to &lt;a href=&#34;https://ajcajc.com/hannukah-of-data-part-2/&#34;&gt;part 2&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
       <title>How is location shared without using GPS?</title>
-      <link>https://blog.ajcajc.com/investigating-browser-geolocation/</link>
+      <link>https://ajcajc.com/investigating-browser-geolocation/</link>
       <pubDate>Fri, 11 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://blog.ajcajc.com/investigating-browser-geolocation/</guid>
-      <description>&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/allow-access-question.png&#34;
+      <guid>https://ajcajc.com/investigating-browser-geolocation/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/allow-access-question.png&#34;
     alt=&#34;Browser pop-up asking if I&amp;#39;d like to allow google.com to access my location&#34;&gt;
 &lt;/figure&gt;
 
@@ -222,7 +222,7 @@ How can that possibly work without GPS?&lt;/p&gt;
 
 
 &lt;h2 id=&#34;my-computers-ip-address&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#my-computers-ip-address&#34;&gt;My computer&amp;rsquo;s IP address&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#my-computers-ip-address&#34;&gt;My computer&amp;rsquo;s IP address&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;Using IP addresses for geolocation is normally accurate to within the same city, you can read more about &lt;a href=&#34;https://whatismyipaddress.com/geolocation&#34;&gt;IP address geolocation here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can look up your own IP address on, for example, &lt;a href=&#34;https://www.iplocation.net/ip-lookup&#34;&gt;IPLocation.net&lt;/a&gt;, which gives you results from multiple services.
@@ -231,7 +231,7 @@ If you look up your IP address, you may notice that not all the results are accu
 
 
 &lt;h2 id=&#34;nearby-wireless-access-points&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#nearby-wireless-access-points&#34;&gt;Nearby wireless access points&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#nearby-wireless-access-points&#34;&gt;Nearby wireless access points&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;This refers to the various WiFi networks that my computer can see.
 So high accuracy geolocation comes from WiFi!&lt;/p&gt;
@@ -239,7 +239,7 @@ So high accuracy geolocation comes from WiFi!&lt;/p&gt;
 &lt;p&gt;Google has been collecting data on WiFi networks for years.
 It &lt;a href=&#34;http://static.googleusercontent.com/media/www.google.com/en//googleblogs/pdfs/google_submission_dpas_wifi_collection.pdf&#34;&gt;stated back in 2010&lt;/a&gt; that it uses Google Street View cars to collect WiFi data in our neighborhoods.
 They store the WiFi networks they detect + the car’s GPS coordinates for future use.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/google-street-view-car.webp&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/google-street-view-car.webp&#34;
     alt=&#34;A parked street view car with its massive camera strapped to the roof&#34;&gt;&lt;figcaption&gt;
       &lt;h4&gt;Peeping on your WiFi&lt;/h4&gt;
     &lt;/figcaption&gt;
@@ -250,17 +250,17 @@ They store the WiFi networks they detect + the car’s GPS coordinates for futur
 
 
 &lt;h1 id=&#34;inspecting-the-data-that-firefox-is-sending-to-google&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#inspecting-the-data-that-firefox-is-sending-to-google&#34;&gt;Inspecting the data that Firefox is sending to Google&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#inspecting-the-data-that-firefox-is-sending-to-google&#34;&gt;Inspecting the data that Firefox is sending to Google&lt;/a&gt;
 &lt;/h1&gt;
 
 
 
 &lt;h2 id=&#34;using-developer-tools&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#using-developer-tools&#34;&gt;Using Developer Tools&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#using-developer-tools&#34;&gt;Using Developer Tools&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;I want to see if I can intercept the request that Firefox sends to Google.
 So I set up a basic webpage that uses Javascript to request the user’s location from the &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API&#34;&gt;Geolocation API&lt;/a&gt; and display it on a map.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/dev-tools-screenshot.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/dev-tools-screenshot.png&#34;
     alt=&#34;Developer Tools screenshot showing no http requests to any API after clicking &amp;#39;Allow&amp;#39; on the Location Services pop-up&#34;&gt;&lt;figcaption&gt;
       &lt;h4&gt;Where are my geolocation requests?&lt;/h4&gt;
     &lt;/figcaption&gt;
@@ -271,11 +271,11 @@ So I set up a basic webpage that uses Javascript to request the user’s locatio
 
 
 &lt;h2 id=&#34;using-an-https-proxy&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#using-an-https-proxy&#34;&gt;Using an HTTP(s) Proxy&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#using-an-https-proxy&#34;&gt;Using an HTTP(s) Proxy&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;I set up &lt;a href=&#34;https://mitmproxy.org/&#34;&gt;mitmproxy&lt;/a&gt; to intercept the http(s) requests that Firefox was sending.
 This is configurable from within Firefox, so we have to trust Firefox to send all of its requests through the proxy.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/mitm-proxy-screenshot.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/mitm-proxy-screenshot.png&#34;
     alt=&#34;List of http requests that mitmproxy captured from my session with the map page&#34;&gt;
 &lt;/figure&gt;
 
@@ -287,7 +287,7 @@ Wouldn’t it break in corporate environments where the app must use the proxy?&
 
 
 &lt;h2 id=&#34;using-wireshark&#34;&gt;
-  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://blog.ajcajc.com/investigating-browser-geolocation/#using-wireshark&#34;&gt;Using Wireshark&lt;/a&gt;
+  &lt;a class=&#34;Heading-link u-clickable&#34; href=&#34;https://ajcajc.com/investigating-browser-geolocation/#using-wireshark&#34;&gt;Using Wireshark&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;I recently learned how to enable Wireshark &lt;a href=&#34;https://wiki.wireshark.org/TLS#tls-dissection-in-wireshark&#34;&gt;to decrypt TLS traffic&lt;/a&gt;.
 I prefer to do it the easy way by setting SSLKEYLOGFILE when opening Firefox.
@@ -298,25 +298,25 @@ I recommend creating a new &lt;a href=&#34;https://support.mozilla.org/en-US/kb/
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SSLKEYLOGFILE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$HOME&lt;span style=&#34;color:#e6db74&#34;&gt;/decrypted.log&amp;#34;&lt;/span&gt; firefox -P &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Decrypted&amp;#34;&lt;/span&gt; &amp;amp;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then I visit my map, start the capture, click the &lt;em&gt;Allow&lt;/em&gt; button for the pop-up, wait until it shows my location, stop the capture and &lt;strong&gt;VOILA&lt;/strong&gt;!&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/wireshark-geolocate-decrypted-1.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/wireshark-geolocate-decrypted-1.png&#34;
     alt=&#34;Wireshark session showing the decrypted http2 geolocation request&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;There&amp;rsquo;s the geolocation POST request with all of my nearby WiFi networks!
 But why is it going to&amp;hellip; &lt;code&gt;location.services.mozilla.com&lt;/code&gt;??&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/geolocate-post-request-redacted.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/geolocate-post-request-redacted.png&#34;
     alt=&#34;POST request with all of my nearby access point MAC addresses in the body&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;What&amp;rsquo;s more confusing, it failed this time with 404 NOT FOUND.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/geolocate-response-404.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/geolocate-response-404.png&#34;
     alt=&#34;POST response saying 404 not found&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;I reopened the webpage while running Wireshark, and this time it successfully showed my location.
 However, there&amp;rsquo;s no corresponding HTTP request&amp;hellip;
 A bit more investigation shows that it&amp;rsquo;s an HTTP3 request, which I know very little about.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://blog.ajcajc.com/geolocate-http3-request.png&#34;
+&lt;figure&gt;&lt;img src=&#34;https://ajcajc.com/geolocate-http3-request.png&#34;
     alt=&#34;Wireshark screenshot showing HTTP/3 packets&#34;&gt;
 &lt;/figure&gt;
 
